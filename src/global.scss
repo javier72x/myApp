@@ -1,0 +1,352 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+// quill editor
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/jodit/build/jodit.min.css";
+
+/** Modal añadir secuencia **/
+ion-modal#modal-secuencia, ion-modal#main-modal {
+	--height: 762px;
+	--border-radius: 16px;
+	--box-shadow: 0 0px 12px -1px rgb(0 0 0 / 48%), 0 11px 29px -14px rgb(0 0 0 / 48%);
+	--width: 550px;
+	justify-content: flex-end;
+	margin-right: 18px;
+}
+
+ion-modal#ver-secuencia {
+	--height: 762px;
+	--border-radius: 16px;
+	--box-shadow: 0 0px 12px -1px rgb(0 0 0 / 48%), 0 11px 29px -14px rgb(0 0 0 / 48%);
+	--width: 550px;
+	justify-content: flex-end;
+	margin-right: 18px;
+}
+
+ion-modal ion-toolbar {
+    --background: #92949c;
+    --color: white;
+}
+
+ion-modal ion-content {
+    --padding-top: 0px !important;
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+}
+
+ion-modal #slcModal {
+    padding: 7px 40px 7px 12px;
+    border: 1px solid #E8EAED;
+    color: #223254;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098A9;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 150ms ease;
+}
+
+#slcModal option {
+    color: #223254;
+}
+
+ion-modal #quillText, ion-modal #quillTextMain {
+    height: 57%;
+    width: 100%;
+}
+
+#quillText .ql-toolbar, #quillTextMain .ql-toolbar {
+    background-color: #ffffff;
+    // border-top-left-radius: 4px;
+    // border-top-right-radius: 4px;
+}
+
+#quillText .ql-container, #quillTextMain .ql-container {
+    background-color: #ffffff;
+    color: #000000;
+    // border-bottom-left-radius: 4px;
+    // border-bottom-right-radius: 4px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+
+/** Modal Ver secuencia **/
+
+ion-modal#modal-ver-secuencia {
+    --width: 80%;
+    --height: 90%;
+}
+
+#modal-ver-secuencia ion-card {
+    height: 100%;
+}
+
+#modal-ver-secuencia ion-card ion-card-header {
+    align-items: center;
+}
+
+ion-header {
+    height: 65px;
+    //box-shadow: 0 2px 4px -1px rgb(57 76 96 / 15%);
+    background-image: none !important;
+    background: #00c1eb;
+}
+
+.header-md::after {
+    background-image: none !important;
+}
+
+#modal-ver-secuencia ion-card ion-card-content {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#modal-ver-secuencia .div-ctn-btns {
+    display: flex;
+    justify-content: center;
+}
+
+@font-face {
+    font-family: 'Solitreo';
+    src: url('./assets/fonts/canva2.woff2')
+}
+
+@font-face {
+    font-family: 'Volte-Bold';
+    src: url('./assets/fonts/Volte-Bold.otf')
+}
+
+@font-face {
+    font-family: 'Volte-BoldItalic';
+    src: url('./assets/fonts/Volte-BoldItalic.otf')
+}
+
+@font-face {
+    font-family: 'Volte-Light';
+    src: url('./assets/fonts/Volte-Light.otf')
+}
+
+@font-face {
+    font-family: 'Volte-LightItalic';
+    src: url('./assets/fonts/Volte-LightItalic.otf')
+}
+
+@font-face {
+    font-family: 'Volte-Medium';
+    src: url('./assets/fonts/Volte-Medium.otf')
+}
+
+@font-face {
+    font-family: 'Volte-MediumItalic';
+    src: url('./assets/fonts/Volte-MediumItalic.otf')
+}
+
+@font-face {
+    font-family: 'Volte-Regular';
+    src: url('./assets/fonts/Volte-Regular.otf')
+}
+
+@font-face {
+    font-family: 'Volte-RegularItalic';
+    src: url('./assets/fonts/Volte-RegularItalic.otf')
+}
+
+@font-face {
+    font-family: 'Volte-Semibold';
+    src: url('./assets/fonts/Volte-Semibold.otf')
+}
+
+@font-face {
+    font-family: 'Volte-SemiboldItalic';
+    src: url('./assets/fonts/Volte-SemiboldItalic.otf')
+}
+
+.color-primary-bg {
+	--background-color: #6228cf;
+}
+
+.color-primary-shade {
+	--ion-color-primary-shade: #5623b6;
+}
+
+.color-primary-tint {
+	--ion-color-primary-tint: #723ed4;
+}
+
+.color-primary-contrast {
+	--ion-color-primary-contrast: #ffffff;
+}
+
+/* Ancho del scroll */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Fondo del scroll */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Color de la barra de desplazamiento */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Hover color de la barra de desplazamiento */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body {
+    font-family: 'Volte-Medium' !important;
+    --ion-font-family: 'Volte-Medium' !important
+}
+
+.ql-toolbar.ql-snow {
+    border: none !important;
+}
+
+.ql-container.ql-snow {
+    border: none !important;
+}
+
+.ql-clipboard {
+	left: -100000px;
+	height: 1px;
+	overflow-y: hidden;
+	position: absolute;
+	top: 50%;
+	// ensure quill clipboard preserve whitespaces
+	// white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.fade-in-down {
+	animation: fadeInDown;
+	animation-duration: 600ms;
+}
+
+.fade-in {
+	animation: fadeIn;
+	animation-duration: 400ms;
+}
+
+
+.shadow-hover:hover {
+	box-shadow: 0px 0px 10px #00c1eb;
+	transition-duration: 400ms;
+}
+
+.menu-hover:hover {
+	--background: #ece1ff;
+	--transition: 400ms;
+}
+
+
+.librosDescargados-select {
+  
+    // --background: transparent;
+    --offset-x:23px;
+    --max-width:170px;
+
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 13px;
+        border-bottom-right-radius: 13px;
+
+   
+
+  ion-label.sc-ion-label-ios-h {
+    --color: white !important;
+  }
+  
+  ion-list.list-ios {
+    background:#606060;
+    --ion-item-background: #606060;
+  }
+  
+  ion-item {
+    --background: #606060;
+    color: white;
+    font-size: 13px;
+    font-family: Volte;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid white;
+    --border-style: none !important;
+
+    &:hover,
+    &:active {
+      color: white;
+    }
+
+    &:last-child{
+        border-bottom: none;
+        margin-bottom: 5px;
+    }
+  }
+  
+  ion-checkbox {
+    --border-radius: 50% !important;
+    --background-checked: #03c1ea !important;
+    --border-color-checked: #03c1ea !important;
+    --border-color: white;
+    width: 12px;
+    height: 12px;
+  }
+}
+

@@ -1,0 +1,103 @@
+  <ion-content>
+	<img style="width: 400px; position: absolute;right: 50px;bottom: 0px; z-index: 0;filter: invert(100%) sepia(82%) saturate(526%) hue-rotate(172deg) brightness(101%) contrast(98%);" src="./assets/icon/icono_perseus.svg" alt="PerseusApp" role="presentation">
+
+	<!-- <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true" style="padding-right: 5%;"></ion-fab> -->
+	<ion-title style="font-family: Volte-Bold; margin-top: 30px;font-size: 30px;font-weight: 500;">Secuencias</ion-title>
+		<div class="container-loading" *ngIf="secuenciasIsLoading">
+			<ion-list [inset]="true">
+				<ion-item *ngFor="let skele of skeleton; index as i" lines="none">
+					<ion-grid number="skele">
+						<ion-row class="ion-justify-content-between">
+						<ion-col size="8">
+								<ion-skeleton-text class="skeleton-text" [animated]="true" style="width: {{skele}}%"></ion-skeleton-text>
+						</ion-col>
+						<ion-col size="1">
+								<ion-skeleton-text class="skeleton-text" [animated]="true" style="width: 50%; margin-right: 70%;"></ion-skeleton-text>
+						</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-item>
+			</ion-list>
+		</div>
+
+	<ion-accordion-group expand="inset" *ngIf="!secuenciasIsLoading">
+		<ion-accordion [value]="i" *ngFor="let libro of librosData; index as i;" >
+			<ion-item (click)="onClickGetSecuencias(libro)" slot="header" style="--background-hover: #028dac; --ripple-color: #00c1eb; ">
+				  <!-- <ion-label>{{ libro.grado }}{{ libro.suffix }} - {{ libro.nombreLibro}}</ion-label> -->
+				<ion-label style="font-family: Volte-Regular;  font-weight: 500;">{{ libro }}</ion-label>
+			</ion-item>
+			<ion-grid class="fade-in" slot="content">	
+				<div class="conatiner-loading-secuencias" *ngIf="secuenciasLibroLoading">
+					<ion-spinner class="element-loading-secuencias" name="dots" color="danger"></ion-spinner>
+				</div>
+				<ion-row *ngIf="!secuenciasLibroLoading" class="row-cards">
+						<!-- <ion-col *ngFor="let secuencia of secuenciasLibro" size-lg="3" size-md="4" size-sm="6" size="12">
+							<ion-card mode="ios">
+								<ion-card-header>
+									<ion-card-title>Pagina: {{ secuencia.pagina }}</ion-card-title>
+									<ion-card-subtitle >{{ libro.nombreLibro }}</ion-card-subtitle>
+								</ion-card-header>
+								<ion-card-content>
+									<ion-button (click)="borrarSecuencia(secuencia, libro)" color="danger" size="small" shape="round" fill="solid">Borrar</ion-button>
+									<ion-button (click)="verSecuencia(secuencia, libro)" color="dark" size="small" shape="round" fill="solid">Ver</ion-button>
+								</ion-card-content>
+							</ion-card>
+						</ion-col>   -->
+						
+						
+					<ion-list lines="none" style="width: 100%;">
+						<ion-item *ngIf="noHaySecuencias">Aun no hay secuencias didacticas en este libro.</ion-item>
+						<ion-item lines="full" class="item-secuencia" *ngFor="let secuencia of secuenciasLibro">
+							<ion-label style="font-family: Volte-Regular;  font-weight: 600;">Pagina {{ secuencia.pagina }}</ion-label>
+							<ion-button slot="end" (click)="borrarSecuencia(secuencia, libro)" color="danger" size="small" shape="round" fill="solid">
+								<ion-icon name="trash" class="margin-x-2"></ion-icon>Borrar
+							</ion-button>
+							<ion-button slot="end" (click)="verSecuencia(secuencia, libro)" color="dark" size="small" shape="round" fill="solid">
+								<ion-icon name="eye" class="margin-x-2"></ion-icon>Ver
+							</ion-button>
+						</ion-item>
+					</ion-list>
+					</ion-row>
+				</ion-grid>
+		  </ion-accordion>
+	  </ion-accordion-group>
+
+
+	  <ion-modal id="ver-secuencia" style="--border-radius: 8px; font-family: Volte-Regular;" trigger="open-modal" [isOpen]="modalVerSecuencia" 
+	  	[initialBreakpoint]="0.8" [breakpoints]="[0.8, 0.15]" 
+		[backdropDismiss]="false" [backdropBreakpoint]="1"
+        handle="false" class="modalService">
+        <ng-template>
+            <div style="height: 40px;width: 100%;">
+                <div style="background: #f2f6fc;height: 40px;width: 100%;    display: flex;">
+                    <ion-label id="slc-label">Pagina:</ion-label>
+                    <ion-buttons style="color:#000000; right: 0;position: absolute;width: 40px;height: 40px;">
+                        <ion-button shape="round" fill="clear" (click)="modalState()">
+                            <ion-icon slot="icon-only" size="large" name="close-circle"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                    <select disabled id="slcModal" 
+						#select name="select" [(ngModel)]="secuencia.pagina" value="{{ secuencia.pagina }}">
+			            <option>{{ secuencia.pagina }}</option>
+			        </select>
+					<div lines="none">
+						<p style="margin: auto; margin-top: 8px; margin-left: 25px;color: #000000;">{{ secuencia.nombreLibro }}</p>
+					</div>
+                </div>
+            </div>
+            <ion-content class="ion-padding">
+                <quill-editor #quillVerSecuencia style="padding: 2px;margin: 0;" [formControl]="frmContenido" [modules]="quillModules" id="quillText" 
+					placeholder="Insertar texto aqui...">
+				</quill-editor>
+                <div style="text-align: center; margin-top: 4px;">
+					<ion-button (click)="guardarEdited(secuencia)" 
+						color="success" size="small" shape="round" fill="solid">
+						Guardar
+					</ion-button>
+                </div>
+            </ion-content>
+        </ng-template>
+    </ion-modal>
+  
+  </ion-content>
+  
